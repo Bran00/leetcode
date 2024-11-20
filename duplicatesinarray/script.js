@@ -16,12 +16,29 @@ class Solution {
       let istrue = unique.find(item => item === nums[i])
       if (istrue != undefined) {
         duplicate = true;
+        return duplicate
       } else {
       unique.push(nums[i])
       }
     }
     return duplicate
   }
+
+  containsDuplicate = function (nums) {
+  const seen = new Set();
+
+  for (const num of nums) {
+    // Se o número já estiver no conjunto, encontramos uma duplicata
+    if (seen.has(num)) {
+      return true;
+    }
+    // Caso contrário, adicionamos o número ao conjunto
+    seen.add(num);
+  }
+
+  // Se passarmos por todos os números sem encontrar duplicatas, retornamos false
+  return false;
+};
 }
 
 var has = new Solution()
